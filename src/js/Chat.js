@@ -1,6 +1,6 @@
 export default class Chat {
-  constructor() {
-    this.URL = 'http://localhost:7071/';
+  constructor(URL) {
+    this.URL = URL;
     this.users = document.querySelector('.users');
     this.userName = undefined;
 
@@ -71,7 +71,12 @@ export default class Chat {
   }
 
   activateWS() {
-    const ws = new WebSocket('ws://localhost:7071/ws');
+    const myRegexp = /http(.*)/;
+    const match = myRegexp.exec(this.URL)[1];
+    console.log(match);
+    console.log(`ws${match}ws`);
+
+    const ws = new WebSocket(`ws${match}ws`);
 
     const chatForm = document.querySelector('.chat-input');
     const chatMessage = document.querySelector('.chat-message');

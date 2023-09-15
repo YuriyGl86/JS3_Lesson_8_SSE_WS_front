@@ -3,8 +3,9 @@ import '../../popover/style.css';
 import Chat from './Chat';
 
 export default class LogIn {
-  constructor() {
+  constructor(URL) {
     this.form = document.querySelector('.add-form-modal');
+    this.URL = URL;
 
     this.logInHandler = this.logInHandler.bind(this);
   }
@@ -35,7 +36,7 @@ export default class LogIn {
   async logInHandler(event) {
     event.preventDefault();
     this.popover.removePopover();
-    const result = await LogIn.sendLogInRequest(event.target);
+    const result = await this.sendLogInRequest(event.target);
 
     if (await result.status === 'not a unique username') {
       console.log('не ок');
@@ -44,20 +45,23 @@ export default class LogIn {
       console.log('OK');
       this.popover.removePopover();
       this.form.classList.remove('show');
-      LogIn.activateChat(event.target.name.value);
+      this.activateChat(event.target.name.value);
       // console.log(event.target.name.value)
     }
   }
 
-  static async sendLogInRequest(form) {
-    return fetch('http://localhost:7071/users', {
+  async sendLogInRequest(form) {
+    console.log('sending login request');
+    const URL = `${this.URL}users`;
+    console.log(URL);
+    return fetch(URL, {
       method: 'POST',
       body: new FormData(form),
     }).then((response) => response.json());
   }
 
-  static activateChat(name) {
-    const chat = new Chat();
+  activateChat(name) {
+    const chat = new Chat(this.URL);
     chat.init();
     chat.userName = name;
   }
