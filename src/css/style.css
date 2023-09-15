@@ -1,0 +1,161 @@
+* {
+   box-sizing: border-box;
+}
+
+html {
+   height: 100%;
+}
+
+.container {
+   width: 800px;
+   display: flex;
+}
+
+.users {
+   margin-top: 20px;
+   width: 150px;
+   height: 70%;
+   min-height: 200px;
+   border: 1px solid black;
+   border-radius: 5px;
+   padding: 10px;
+   
+}
+
+.you-red {
+   color: red;
+}
+
+.chat-container {
+   width: 650px;
+   border: 1px solid black;
+   min-height: 500px;
+   display: flex;
+   flex-direction: column;
+   border-radius: 5px;
+   padding: 10px;
+   
+}
+
+.chat-content {
+   height: 450px;
+   overflow-y: scroll;
+   margin-bottom: 15px;
+   padding-right: 10px;
+}
+
+
+.modalBackground {
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 99991;
+    position: absolute;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.modalActive {
+    position: absolute;
+    width: 400px;
+    height: 180px;
+    top: calc(50% - 150px);
+    left: calc(50% - 250px);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: default;
+    padding: 40px 20px;
+}
+
+.modalClose {
+   font-family: var(--font-regular);
+   position: absolute;
+   right: 5px;
+   top: 5px;
+   width: 30px;
+   height: 30px;
+   cursor: pointer;
+}
+
+
+.modalClose img {
+   margin: 3px;
+   width: 24px;
+   height: 24px;
+}
+
+.add-ticket-form {
+   display: flex;
+   flex-direction: column;
+
+}
+
+
+label {
+   margin-bottom: 10px;
+}
+
+input {
+   margin-bottom: 15px;
+   height: 40px;
+   border-radius: 5px;
+   width: 100%;
+}
+
+.description {
+   height: 70px;
+   margin-bottom: 30px;
+}
+
+.add-form-buttons {
+   display: flex;
+   justify-content: center;
+}
+
+.button {
+   margin-right: 20px;
+   cursor: pointer;
+}
+
+.show {
+   display: block;
+}
+
+.date {
+   line-height: 40px;
+}
+
+.form-title {
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+.users {
+   white-space: pre;
+}
+
+/* .chat-input {
+   height: 50px;
+} */
+
+.message-date {
+   font-size: 10pt;
+}
+
+.message {
+   margin-bottom: 10px;
+}
+
+.user-message-date {
+   color: red;
+   text-align: end;
+}
+
+.user-message-content {
+   text-align: end;
+}
